@@ -1,0 +1,12 @@
+.logos{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+}
+.item{
+    display: flex;
+    margin: 10px;
+    color: red;
+    font-size: 2rem;
+}
