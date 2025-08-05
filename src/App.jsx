@@ -8,18 +8,37 @@ import Contato from "./pages/Contato";
 import HelloWorld from "./pages/HelloWorld";
 import Inicio from "./pages/Inicio";
 import Footer from "./components/Footer";
+import {Botao,BotaoChildren} from "./components/Botao";
+
 
 function App() {
   return (
-    <Router> {/* O Router é o componente que permite a navegação entre as páginas da aplicação. */}
+    //TEMA: PROPS
+    //1º Passando propriedades para o componente Botao
+    <>
+    <Botao tamanho="100px" cor="red" />
+    <Botao texto="Botão verde"/>
+    <Botao onClick ={() => alert("Tocou no botão")} tamanho="150px" cor="blue" texto="Botão azul" />
+
+    {/*2º Children*/}
+      <BotaoChildren>
+        <span>Botão com children</span>
+      </BotaoChildren>
+    </>
+
+
+    //AULA 15 - REACT ROUTER DOM
+    // O Router é o componente que permite a navegação entre as páginas da aplicação.
+    // As rotas definem quais componentes serão renderizados para cada caminho da URL. A troca é feito dentro deste componente
+    /* <Router>
       <Navbar />
-      <Routes> {/* As rotas definem quais componentes serão renderizados para cada caminho da URL. A troca é feito dentro deste componente*/}
+      <Routes>
         <Route path="/" element={<Inicio />} />
         <Route path="/contato" element={<Contato />} />
         <Route path="/helloword" element={<HelloWorld />} />
       </Routes>
       <Footer />
-    </Router>
+    </Router> */
   );
 }
 

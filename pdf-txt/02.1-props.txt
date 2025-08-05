@@ -1,0 +1,78 @@
+REACT TREINO
+
+TEMA: PROPS -> mecanismo para passar dados de um componente pai para um filho. É semelhante as váriáres que se
+passa para uma função.
+
+Leitura apenas(imutáveis), ou seja, não pode ser alterado
+Podem ser qualquer tipo de dado – Strings, números, arrays, objetos, funções e até outros componentes React.
+Comunicação entre componentes – Permite que componentes pais enviem informações para componentes filhos.
+
+Exemplos importantes
+
+** Validação de Props com PropTypes
+import PropTypes from "prop-types";
+
+function User({ name, age }) {
+  return (
+    <div>
+      {name} ({age} anos)
+    </div>
+  );
+}
+
+User.propTypes = {
+  name: PropTypes.string.isRequired,
+  age: PropTypes.number,
+};
+
+**Propagação de Props com Spread (...props)
+
+function Input({ label, ...props }) {
+  return (
+    <div>
+      <label>{label}</label>
+      <input {...props} /> {/* Repassa todas as props para o input */}
+    </div>
+  );
+}
+
+// Uso
+<Input label="Nome" type="text" placeholder="Digite seu nome" />
+
+** Passando eventos
+
+function BotaoFilho({ onClick }) {
+  return <button onClick={onClick}>Clique</button>;
+}
+
+function Pai() {
+  const handleClick = () => {
+    alert("O botão foi clicado!");
+  };
+
+  return <BotaoFilho onClick={handleClick} />;
+}
+
+** Children
+O uso de children no React tem um diferencial poderoso: ele permite que 
+você passe conteúdo diretamente dentro do componente (como se fossem "tags aninhadas" em HTML), 
+tornando os componentes mais flexíveis e reutilizáveis.
+
+function Box({ children, corFundo }) {
+  return (
+    <div style={{ backgroundColor: corFundo, padding: "20px" }}>
+      {children} {/* Conteúdo inserido aqui! */}
+    </div>
+  );
+}
+
+// Uso:
+<Box corFundo="lightblue">
+  <h2>Isso é uma caixa!</h2>
+  <p>Com conteúdo dinâmico.</p>
+</Box>
+
+🚀 Quando usar children?
+Sempre que o componente for um "container" (ex.: cards, modais, layouts).
+Para componentes genéricos que precisam encapsular outros elementos.
+Quando o conteúdo é variável ou complexo (evita múltiplas props).
